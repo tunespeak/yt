@@ -6,6 +6,16 @@ For more information about changelogs, check
 [Keep a Changelog](http://keepachangelog.com) and
 [Vandamme](http://tech-angels.github.io/vandamme).
 
+## unreleased
+
+* [BUGFIX] Fix `subscription.insert` by adding a parameter
+* [FEATURE] Add `file_name` attribute to `Yt::FileDetail` model
+
+## 0.32.2 - 2018-05-25
+
+* Use YouTube Analytics API v2 instead of v1. See announcement of v1 deprecation
+https://developers.google.com/youtube/analytics/revision_history#april-26-2018
+
 ## 0.32.1 - 2017-08-14
 
 * [FEATURE] Add `Yt::ContentOwner#bulk_report_jobs`
