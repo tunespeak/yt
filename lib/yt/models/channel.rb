@@ -47,8 +47,9 @@ module Yt
       # Unlike {#subscribe!}, does not raise an error if already subscribed.
       # @raise [Yt::Errors::Unauthorized] if {Resource#auth auth} is not an
       #   authenticated Yt::Account.
-      def subscribe
-        subscriptions.insert(ignore_errors: true).tap do |subscription|
+      def subscribe(insert_params = {})
+        insert_args = [{ ignore_errors: true }, insert_params]
+        subscriptions.insert(*insert_args).tap do |subscription|
           throttle_subscriptions
           @subscription = subscription
         end

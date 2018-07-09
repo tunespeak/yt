@@ -65,6 +65,7 @@ module Yt
       @body = options[:body]
       @headers = options.fetch :headers, {}
       @auth = options[:auth]
+      @net_http_options = options.fetch :net_http_options, {}
     end
 
     # Sends the request and returns the response.
@@ -168,7 +169,8 @@ module Yt
     # Send the request to the server, allowing ActiveSupport::Notifications
     # client to subscribe to the request.
     def send_http_request
-      net_http_options = [uri.host, uri.port, use_ssl: true]
+      net_http_options = { use_ssl: true }.merge(@net_http_options)
+      net_http_options = [uri.host, uri.port, net_http_options]
       ActiveSupport::Notifications.instrument 'request.yt' do |payload|
         payload[:method] = @method
         payload[:request_uri] = uri

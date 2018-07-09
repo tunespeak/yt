@@ -6,8 +6,8 @@ module Yt
     # @private
     class Subscriptions < Base
 
-      def insert(options = {})
-        do_insert
+      def insert(options = {}, insert_params = {})
+        do_insert(insert_params)
       rescue Yt::Error => error
         ignorable_error = error.reasons.include? 'subscriptionDuplicate'
         ignorable_error ||= (@parent.id == @auth.channel.id) if @auth
