@@ -239,7 +239,8 @@ module Yt
     end
 
     def retry_time
-      3 + (10 * @retries_so_far)
+      # 3 + (10 * @retries_so_far)
+      0.5
     end
 
     # In case an authorized request responds with "Unauthorized", checks
